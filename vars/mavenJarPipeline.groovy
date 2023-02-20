@@ -12,7 +12,9 @@ def call(Map config){
         }
 
          stage("Push"){
-            echo "Is's a Push Stage"
+            sh 'docker build -t moqaddas/mavanapplication:$EXECUTOR_NUMBER .'
+            sh 'docker login https://docker.io -u $dockerUser -p $dockerpassword'
+            sh 'docker push moqaddas/mavanapplication:$EXECUTOR_NUMBER'
         }
     }
 }
