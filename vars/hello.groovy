@@ -1,5 +1,5 @@
-def call(String applicationName){
+def call(Map config){
     node{
-        echo "Hello ${applicationName}."
+        echo "Hello ${config.applicationName}."
     }
 }
