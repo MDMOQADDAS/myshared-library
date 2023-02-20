@@ -9,7 +9,7 @@ def call(Map config){
     
        stage("Build"){
        
-        sh 'npm build'
+        sh 'npm run build'
 
        }
 
