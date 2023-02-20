@@ -3,6 +3,7 @@ def call(Map config){
 
         stage("Install"){
             git 'https://github.com/MDMOQADDAS/reactJsPipeline.git'
+           
             sh "npm install"
         }
     
