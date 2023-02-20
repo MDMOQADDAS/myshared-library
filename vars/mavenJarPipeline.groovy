@@ -1,11 +1,18 @@
 def call(Map config){
     node{
-        stage("Dev"){
-            echo "Is's a Dev Stage"
+    
+       stage("Build"){
+        git 'https://github.com/MDMOQADDAS/mavenJarPipeline.git'
+        sh 'mvn -B -DskipTests clean package'
+
+       }
+
+        stage("Test"){
+            sh 'mvn test'
         }
 
-       stage("Build"){
-        echo "It's Build Stage"
-       }
+         stage("Push"){
+            echo "Is's a Push Stage"
+        }
     }
 }
