@@ -1,3 +1,3 @@
-def call(){
-    echo "hi i am from the shared library"
+def call(String name, String dayofWeek){
+    echo "testing"
 }

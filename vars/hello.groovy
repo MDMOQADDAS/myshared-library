@@ -1,3 +1,3 @@
 def call(){
-    echo "hi i am hello"
+    echo "Hello ${name}, Toda is ${dayofWeek}."
 }
