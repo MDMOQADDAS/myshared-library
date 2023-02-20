@@ -21,7 +21,7 @@ def call(Map config){
             sh 'docker build -t moqaddas/reactapplication:$EXECUTOR_NUMBER .'
            
            
-           withDockerRegistry([ credentialsId: $dockerPassword, url: "" ]) {
+           withDockerRegistry([ credentialsId: "$dockerPassword", url: "" ]) {
             dockerImage.push()
             }
         }
