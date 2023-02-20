@@ -20,10 +20,9 @@ def call(Map config){
          stage("Push"){
             sh 'docker build -t moqaddas/reactapplication:$EXECUTOR_NUMBER .'
            
-           
-           withDockerRegistry([ credentialsId: "$dockerPassword", url: "" ]) {
-            dockerImage.push()
-            }
+           sh "docker login -u $dockerUser -p $dockerPassword  https://docker.io"
+
+
         }
     }
 }
