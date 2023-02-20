@@ -3,7 +3,7 @@ def call(Map config){
     
        stage("Build"){
         git 'https://github.com/MDMOQADDAS/mavenJarPipeline.git'
-        sh 'mvn mvn package'
+        sh 'mvn package'
 
        }
 
