@@ -1,3 +1,3 @@
-def call(String name, String dayofWeek){
+def call(){
     echo "testing"
 }
