@@ -9,7 +9,7 @@ def call(Map config){
     
        stage("Build"){
        
-        sh 'docker build -t moqaddas/reactapplication:$EXECUTOR_NUMBER .'
+        sh 'docker build -t moqaddas/reactapplication:$BUILD_NUMBER .'
 
        }
 
