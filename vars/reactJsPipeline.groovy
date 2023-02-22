@@ -16,7 +16,7 @@ def call(Map config){
         stage("Test"){
             sh "docker rm -f reactapp || date"
             sh "docker run -d --name reactapp -p 80:3000 moqaddas/reactapplication:$BUILD_NUMBER"
-            sh "IP_ADDR=docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' reactapp"
+            sh "IP_ADDR=`docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' reactapp"`
             sh "curl $IP_ADDR | grep Moqaddas"
         }
 
