@@ -7,11 +7,11 @@ def call(Map config){
 
        }
        stage("Build"){
-        sh 'mvn package'
+        sh '/usr/bin/bin/mvn package'
        }
 
         stage("Test"){
-            sh 'mvn test'
+            sh '/usr/bin/bin/mvn test'
         }
 
          stage("Delivery"){
