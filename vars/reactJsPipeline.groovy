@@ -21,10 +21,10 @@ def call(Map config){
            {
              sh "docker login -u ${user} -p ${pass}  https://docker.io"
              
-             sh "docker logout"
+             
             }
-
-          
+            sh "docker push moqaddas/reactapplication:$BUILD_NUMBER"
+          sh "docker logout"
 
 
         }
