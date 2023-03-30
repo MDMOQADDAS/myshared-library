@@ -7,12 +7,12 @@ def call(Map config){
     
        stage("Build"){
        
-        sh '/usr/bin/flutter/bin/flutter build apk'
+        sh 'sudo /root/Downloads/flutter/bin/flutter build apk'
 
        }
 
         stage("Test"){
-            sh "/usr/bin/flutter/bin/flutter test"
+            sh "sudo /root/Downloads/flutter/bin/flutter test"
             
         }
 
