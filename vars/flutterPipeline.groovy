@@ -7,17 +7,17 @@ def call(Map config){
     
        stage("Build"){
        
-        sh 'flutter build apk'
+        sh '/usr/bin/flutter/bin/flutter build apk'
 
        }
 
         stage("Test"){
-            sh "flutter test"
+            sh "/usr/bin/flutter/bin/flutter test"
             
         }
 
          stage("Delivery"){
-
+            echo "Code will be release to github"
         }
     }
 }
