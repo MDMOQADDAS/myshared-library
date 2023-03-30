@@ -1,17 +1,20 @@
 def call(Map config){
     node{
     
-       stage("Build"){
+       stage("SCM"){
         git 'https://github.com/MDMOQADDAS/mavenJarPipeline.git'
-        sh 'mvn package'
+        
 
+       }
+       stage("Build"){
+        sh 'mvn package'
        }
 
         stage("Test"){
             sh 'mvn test'
         }
 
-         stage("Push"){
+         stage("Delivery"){
             sh 'docker build -t moqaddas/mavanapplication:$BUILD_NUMBER .'
             withCredentials([usernamePassword(credentialsId: '4636fbc0-97d9-4b53-a309-7121c3d91395', passwordVariable: 'pass', usernameVariable: 'user')]) 
            {
