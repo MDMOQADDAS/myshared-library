@@ -3,6 +3,9 @@ def call(Map pipelineParams){
 
         stage("SCM"){
             git 'https://github.com/MDMOQADDAS/reactJsPipeline.git'
+
+            sh "echo $pipelineParams.applicationName"
+            sh "echo $pipelineParams.registryUserName"
         }
     
        stage("Build"){
@@ -21,8 +24,8 @@ def call(Map pipelineParams){
            {
              sh "docker login -u ${user} -p ${pass} "
              
-              sh "docker push moqaddas/reactapplication:$BUILD_NUMBER"
-          sh "docker logout"
+             // sh "docker push moqaddas/reactapplication:$BUILD_NUMBER"
+              sh "docker logout"
             }
            
 
