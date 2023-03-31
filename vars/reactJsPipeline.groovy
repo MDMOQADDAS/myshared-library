@@ -2,21 +2,20 @@ def call(Map pipelineParams){
     node{
 
         stage("SCM"){
-            git 'https://github.com/MDMOQADDAS/reactJsPipeline.git'
+            git "$pipelineParams.apprepo"
 
-            sh "echo $pipelineParams.applicationName"
-            sh "echo $pipelineParams.registryUserName"
+          
         }
     
        stage("Build"){
        
-        sh 'docker build -t moqaddas/reactapplication:$BUILD_NUMBER .'
+        sh "docker build -t $pipelineParams.registryUserName/$pipelineParams.containerImageName:$BUILD_NUMBER ."
 
        }
 
         stage("Test"){
-            sh "docker rm -f reactapp || date"
-            sh "docker run -d --name reactapp -p 80:3000 moqaddas/reactapplication:$BUILD_NUMBER"
+            sh "docker rm -f $pipelineParams.applicationName || date"
+            sh "docker run -d --name $pipelineParams.applicationName -p 80:3000 $pipelineParams.registryUserName/$pipelineParams.containerImageName:$BUILD_NUMBER"
         }
 
          stage("Delivery"){
@@ -24,7 +23,7 @@ def call(Map pipelineParams){
            {
              sh "docker login -u ${user} -p ${pass} "
              
-             // sh "docker push moqaddas/reactapplication:$BUILD_NUMBER"
+             // sh "docker push $pipelineParams.registryUserName/$pipelineParams.containerImageName:$BUILD_NUMBER"
               sh "docker logout"
             }
            
