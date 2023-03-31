@@ -1,13 +1,13 @@
-def call(Map config){
+def call(Map pipelineParams){
     node{
 
         stage("SCM"){
-            git 'https://github.com/MDMOQADDAS/flutter-application.git'
+            git "$pipelineParams.apprepo"
         }
     
        stage("Build"){
        
-        sh 'sudo /root/Downloads/flutter/bin/flutter build apk'
+        sh "sudo /root/Downloads/flutter/bin/flutter build $pipelineParams.platform"
 
        }
 
